@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Python Tweet Analysis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.8/d3.min.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="{{ url_for('static', filename='js/action.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/graficar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+  </head>
+  <body>
+    <header>
+      <!--<div class="container-logo">
+        <a href="http://www.inpec.gov.co/" target="_blank"><img src="images/logo.png" alt="img responsive" class="img-responsive img-fluid center-block" width="60%"></a>
+
+      </div>-->
+      <div class="container-fluid">
+        <section class="row">
+          <div class="col-md-8 text-center">
+            <img id="caron" src="{{ url_for('static', filename='images/logoGeneral.png') }}" alt="img caron" class="img-fluid">
+          </div>
+          <!--<div class="col-md-4 center-block">
+            <a href="#"><p id="nosotros" align="center"><img  src="images/contacts-icon.png" alt="img responsive" width="60" height="60"> ABOUT US </p></a>
+          </div>-->
+          <div class="col-md-4 text-center">
+            <img id="lgF" src="{{ url_for('static', filename='images/Escudo_UD.png') }}" alt="img " class="img-fluid">
+
+          </div>
+        </section>
+
+      </div>
+    </header>
+
+
+
+
+    <!--<div class="">-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="manuales">Manuals <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <!--</div>-->
+
+<br>
+    <!--<div class="panel panel-primary">-->
+<div class="container">
+  <section class="row">
+    <div class="col-md-4">
+      <h1>User Manual</h1>
+      <hr/>
+      <p>Here you can download the User Manual of  Comparison of CNN Models in Aerial Image Classification</p>
+      <hr/>
+      <div class="col-md-12 text-center">
+        <a href="{{ url_for('static', filename='manuales/Comparison_of_CNN_Models_Aerial_Image_Classification_Manual_Usuario.pdf') }}" download="Manual Usuario" class="text-center"><img id="manualUsuario" src="{{ url_for('static', filename='images/LogoPDF.png') }}" alt="img caron" class="img-fluid"></a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h1>Installation Manual</h1>
+      <hr/>
+      <p>Here you can download the Installation Manual of  Comparison of CNN Models in Aerial Image Classification</p>
+      <hr/>
+      <div class="col-md-12 text-center">
+        <a href="{{ url_for('static', filename='manuales/Comparison_of_CNN_Models_in_Aerial_Image_Classification_Manual_Tecnico.pdf') }}" download="Manual Instalacion"><img id="manualInstalacion" src="{{ url_for('static', filename='images/LogoPDF.png') }}" alt="img caron" class="img-fluid"></a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h1>Github Repository</h1>
+      <hr/>
+      <p>Here you can find the Github repository of  Comparison of CNN Models in Aerial Image Classification</p>
+      <hr/>
+      <div class="col-md-12 text-center">
+        <a href="https://github.com/Parall-UD/Comparison-CNN-Models-Aerial-Image-Classification" target="_blank"><img id="github" src="{{ url_for('static', filename='images/logoGit.png') }}" alt="img caron" class="img-fluid"></a>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!--<a href="{{ url_for('static', filename='manuales/1032479265.pdf') }}" download="iPhone User's Guide">click me</a>-->
+<br>
+<hr/>
+<br>
+<div class="container" align="center">
+  <h1>Video-Tutorial</h1>
+  <hr/>
+  <p>The following video presents the operation of Comparison of CNN Models in Aerial Image Classification</p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/8F2X7t35DB8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 card text-white bg-dark" id="zonCopyRight">
+      <div class="card-body">
+        <p class="card-text" align="center">GICOGE <i class="fa fa-copyright" aria-hidden="true"></i> 2019-2020</p>
+        <p class="card-text" align="center">Grupo de Investigación Internacional en Informática, Comunicación y Gestión del Conocimiento</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+    <script src="{{ url_for('static', filename='js/downloadImages.js') }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Python Tweet Analysis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.8/d3.min.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript.util/0.12.12/javascript.util.min.js"></script>
+    <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<script src="../static/js/action.js"></script>-->
+    <script src="{{ url_for('static', filename='js/action.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/graficar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert.min.js') }}"></script>
+    <script src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <!--<link rel="stylesheet" href="../static/css/estilos.css">-->
+  </head>
+
+
+
+  <body>
+    <header>
+      <div class="container-fluid">
+        <section class="row">
+          <div class="col-md-8 text-center">
+            <!--<img id="caron" src="{{ url_for('static', filename='images/logoProducto.png') }}" alt="img caron" class="img-fluid">-->
+            <img id="caron" src="../static/images/logoGeneral.png" alt="img caron" class="img-fluid">
+          </div>
+          <div class="col-md-4 text-center">
+            <!--<img id="lgF" src="{{ url_for('static', filename='images/Escudo_UD.png') }}" alt="img " class="img-fluid">-->
+            <img id="lgF" src="../static/images/Escudo_UD.png" alt="img " class="img-fluid">
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="manuales">Manuals <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <br><br><br>
+
+    <div id="welcome_section" class="container">
+        <div id="descripcion" class="text-center">
+          <h1>Welcome</h1>
+          <hr/>
+          <br>
+          <p text-align="center" style="font-size:18px;">This application aims to provide an intuitive web environment to carry out the comparison of convolutional neural network models, focused on the classification of satellite scenes taking classes such as: Airplane, Airport, Commercial Area, Forest, Highway, Island, Ship and Stadium. The comparison can be made with its own model compared to pre-trained models such as MobileNet, ResNet50, MobileNetV2 and InceptionV3, or only among pre-trained models. Finally, the software performs the comparison and sends a report with the evaluation of metrics such as: Roc curves, F1 score, redial score, precision score and Kappa coefficient.</p>
+          <br>
+          <hr/>
+        </div>
+        <br>
+    </div>
+
+    <br>
+    <br>
+    <br><br><br>
+
+    <div class="container-fluid" id="option_section" >
+      <div class="row text-center">
+        <div class="col-md-1">
+          <span></span>
+        </div>
+          <div class="col-md-4">
+            <button id="btn_resources" class="btn btn-outline-info"><i class="fa fa-archive"></i> Resources</button>
+            <br>
+            <hr/>
+            <p text-align="center" style="font-size:18px;">This section contains the pre-trained models and the dataset that was used to train these models</p>
+          </div>
+          <div class="col-md-2">
+            <span></span>
+          </div>
+          <div class="col-md-4">
+            <button id="btn_comparison" class="btn btn-outline-info"><i class="fa fa-pie-chart"></i> Comparison</button>
+            <br>
+            <hr/>
+            <p text-align="center" style="font-size:18px;">This section aims to request the necessary data to make the comparison between the different models of convolutional neural networks</p>
+          </div>
+          <div class="col-md-1">
+            <span></span>
+          </div>
+      </div>
+      <hr/>
+    </div>
+
+
+    <div class="container-fluid" id = "data_source_zone">
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h3>Pre-trained Models</h3>
+              <hr/>
+              <br>
+              <p text-align="center" style="font-size:18px;">This section allows you to download pre-trained models such as MobileNet, MobileNetV2, ResNet50 and InceptionV3. These models were trained through learning transfer</p>
+              <hr/>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md-1">
+              <span></span>
+            </div>
+
+              <div class="col-md-10 text-center">
+                <div class="card bg-light mb-3" id=pretrained_models_resource_card>
+                   <div class="card-body">
+                     <br>
+                     <div class="row">
+                       <div class="col">
+                         <h6>MobileNet</h6>
+                         <hr/>
+                         <br>
+                         <a href="/static/models/model_mobilenet.h5" donwload="model_mobilenet.h5"><button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button></a>
+                         <br>
+                       </div>
+                       <div class="col">
+                         <div class="text-center">
+                           <h6>ResNet50</h6>
+                           <hr/>
+                           <br>
+                           <a href="/static/models/model_resnet50.h5" donwload="model_resnet50.h5"><button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button></a>
+                           <br>
+                         </div>
+                       </div>
+
+                     </div>
+                     <br><br><br>
+                     <div class="row">
+                       <div class="col">
+                         <h6>MobileNetV2</h6>
+                         <hr/>
+                         <br>
+                         <a href="/static/models/model_mobilenetv2.h5" donwload="model_mobilenetv2.h5"><button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button></a>
+                         <br>
+                       </div>
+                       <div class="col">
+                         <h6>InceptionV3</h6>
+                         <hr/>
+                         <br>
+                         <a href="/static/models/model_inceptionv3.h5" donwload="model_inceptionv3.h5"><button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button></a>
+                         <br>
+                       </div>
+                     </div>
+                     <br>
+                   </div>
+                </div>
+              </div>
+
+            <div class="col-md-1">
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <span></span>
+        </div>
+
+        <div class="col-md-5">
+          <div class="row text-center">
+            <div class="col-md-12 text-center">
+              <h3>Image Dataset</h3>
+              <hr/>
+              <br>
+              <p text-align="center" style="font-size:18px;">This section describes the image dataset used to perform the training of the ResNet50, MobileNet, MobileNetV2 and InceptionV3 models</p>
+              <hr/>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md-1">
+              <span></span>
+            </div>
+            <div class="col-md-10">
+              <div class="card bg-light mb3">
+                <div class="card-body text-center">
+                  <br>
+                  <h4>About Dataset</h4>
+                  <hr/>
+                  <br>
+                  <p>This dataset is made up of a total of 4130 images distributed in eight classes: Airplane, Airport, Commercial Area, Forest, Freeway, Island, Ship and Stadium. These images were taken from the <a href="http://www.escience.cn/people/JunweiHan/NWPU-RESISC45.html" target="_blank">NWPU-RESISC45</a> dataset</p>
+                  <br>
+                  <a href="/static/dataset/dataset.rar" donwload="dataset_training.rar"><button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button></a>
+                </div>
+                <br>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="contact">Contact</div>
+    <div id="contactForm">
+      <h1>Please wait a moment</h1>
+      <h1>The model is being verified</h1>
+      <img id="loadingGIF" src="{{ url_for('static', filename='images/load-image.gif') }}" alt="img caron" class="img-responsive img-fluid center-block" height="200" width="200">
+      <br>
+      <h5 text-align="center">This process may take a few seconds, it depends on the loaded model</h5>
+    </div>
+
+    <div id="contact_wait">Contact</div>
+    <div id="contactForm_wait">
+      <h1>Wait a moment, Please</h1>
+      <h2>The data is being processed</h2>
+      <img id="loadingGIF" src="{{ url_for('static', filename='images/load-image.gif') }}" alt="img caron" class="img-responsive img-fluid center-block" height="200" width="200">
+      <br>
+      <h5 text-align="center">This process may take a few minutes</h5>
+    </div>
+
+    <div id="contact_final_success">Contact_final</div>
+    <div id="contactForm_final_success">
+      <h1>The results have been sent to your email</h1>
+      <br>
+      <img id="loadingGIF" src="{{ url_for('static', filename='images/email.gif') }}" alt="img caron" class="img-responsive img-fluid center-block" height="200" width="200">
+      <br>
+      <h5 text-align="center">Check your email, Please</h5>
+    </div>
+
+    <div id="contact_final_error">Contact_final</div>
+    <div id="contactForm_final_error">
+      <h1>An error has occurred in the process</h1>
+      <br>
+      <img id="loadingGIF" src="{{ url_for('static', filename='images/error.jpg') }}" alt="img caron" class="img-responsive img-fluid center-block" height="100" width="100">
+      <h5>Try again later</h5>
+    </div>
+
+    <div class="container-fluid" id = "comparison_zone">
+      <br><br>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-center">Own model</h3>
+              <hr/>
+              <br>
+              <p class="text-center">In this part, you can upload an own model of a convolutional neural network, if you have it. You should keep in mind that, the model must have an input shape of 224x224x3 and an output layer with 8 classes</p>
+              <hr/>
+            </div>
+          </div>
+
+          <div class="row text-center">
+            <div class="col-md-12">
+              <div class="card bg-light mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-inline">
+                        <div class="form-group mr-sm-2">
+                          <p>Do you have a model?</p>
+                        </div>
+                        <div id="model_options" class="form-group">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input mr-sm-2" id="defaultUnchecked" name="defaultExampleRadios" value = 'yes'>
+                            <label class="custom-control-label mr-sm-2" for="defaultUnchecked">Yes</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input mr-sm-2" id="defaultChecked" name="defaultExampleRadios" value = 'no' checked>
+                            <label class="custom-control-label mr-sm-2" for="defaultChecked">No</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <form id="upload-file" method="post" enctype="multipart/form-data">
+                            <div class="form-group files">
+                              <input id="files" type="file" class="form-control" name='file' enctype='multipart/form-data' disabled>
+                            </div>
+                        </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="col-md-12">
+            <h3 class="text-center">Pre-trained Models</h3>
+            <hr/>
+            <br>
+            <p class="text-center">In this step, you must select the model or models that you want to consider in the comparison process. If you uploaded an own model you must select at least one pre-trained model but if you do not have an own model you must select more than one of these models</p>
+            <hr/>
+          </div>
+          <div class="col-md-12 text-center">
+            <div class="card bg-light mb-3">
+              <div class="card-body text-center">
+                <br>
+                <div class="row text-center">
+                  <div class="col text-center">
+                    <div class="chiller_cb">
+                      <input id="pre_mobilenet" type="checkbox" value="mobilenet" name="pretrained_models_compare" checked>
+                      <label for="pre_mobilenet">MobileNet</label>
+                      <span></span>
+                    </div>
+                  </div>
+                  <div class="col text-center">
+                    <div class="chiller_cb">
+                      <input id="pre_resnet50" type="checkbox" value="resnet50" name="pretrained_models_compare">
+                      <label for="pre_resnet50">ResNet50</label>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col text-center">
+                    <div class="chiller_cb">
+                      <input id="pre_mobilenetv2" type="checkbox" value="mobilenetv2" name="pretrained_models_compare" checked>
+                      <label for="pre_mobilenetv2">MobileNetV2</label>
+                      <span></span>
+                    </div>
+                  </div>
+                  <div class="col text-center">
+                    <div class="chiller_cb">
+                      <input id="pre_inceptionv3" type="checkbox" value="inceptionv3" name="pretrained_models_compare">
+                      <label for="pre_inceptionv3">InceptionV3</label>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-center">Compare</h3>
+              <hr/>
+              <br>
+              <p class="text-center">In order to start the comparison process, you must provide an email and the platform are going to send the results report to this email.</p>
+              <hr/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card bg-light mb-3">
+                <div class="card-body ">
+                  <form>
+                    <div class="form-group ">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <label class="text-center" for="email_user">Email</label>
+                          <input type="email" class="form-control" id="email_user" aria-describedby="emailHelp" placeholder="example@gmail.com" >
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-12 text-center">
+                              <button type="button" class="btn btn-info text-center" id="button_send">Run App</button>
+                          </div>
+                        </div>
+
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <br><br><br>
+
+
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 card text-white bg-dark" id="zonCopyRight">
+          <div class="card-body">
+            <p class="card-text" align="center">GICOGE <i class="fa fa-copyright" aria-hidden="true"></i> 2019-2020</p>
+            <p class="card-text" align="center">Grupo de Investigación Internacional en Informática, Comunicación y Gestión del Conocimiento</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>

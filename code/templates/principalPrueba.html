@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Python Tweet Analysis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.8/d3.min.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript.util/0.12.12/javascript.util.min.js"></script>
+    <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<script src="../static/js/action.js"></script>-->
+    <script src="{{ url_for('static', filename='js/action.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/graficar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert.min.js') }}"></script>
+    <script src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <!--<link rel="stylesheet" href="../static/css/estilos.css">-->
+  </head>
+
+
+
+  <body>
+    <header>
+      <div class="container-fluid">
+        <section class="row">
+          <div class="col-md-8 text-center">
+            <!--<img id="caron" src="{{ url_for('static', filename='images/logoProducto.png') }}" alt="img caron" class="img-fluid">-->
+            <img id="caron" src="../static/images/LogoProducto.png" alt="img caron" class="img-fluid">
+          </div>
+          <div class="col-md-4 text-center">
+            <!--<img id="lgF" src="{{ url_for('static', filename='images/Escudo_UD.png') }}" alt="img " class="img-fluid">-->
+            <img id="lgF" src="../static/images/Escudo_UD.png" alt="img " class="img-fluid">
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">ISAC</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="manuales">Manuales <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <br><br><br>
+
+    <div class="container">
+        <div id="descripcion" class="text-center">
+          <h1>Weltome To X</h1>
+          <hr/>
+          <br>
+          <p text-align="center" style="font-size:18px;">This Application has the purpose of ...</p>
+          <br>
+          <hr/>
+        </div>
+        <br>
+        <hr/>
+    </div>
+
+    <br>
+    <br>
+    <br><br><br>
+
+    <div class="container-fluid" id="option_section" hidden>
+      <div class="row text-center">
+        <div class="col-md-1">
+          <span></span>
+        </div>
+          <div class="col-md-4">
+            <button id="btn_resources" class="btn btn-outline-info"><i class="fa fa-archive"></i> Resources</button>
+            <br>
+            <hr/>
+            <p text-align="center" style="font-size:18px;">This section contains all elements that sadlksadkljas dksjfklsdfjlds dsfñlkdsñlfkdñslfk lfksdñflkdsñlfkdsñ</p>
+          </div>
+          <div class="col-md-2">
+            <span></span>
+          </div>
+          <div class="col-md-4">
+            <button id="btn_comparison" class="btn btn-outline-info"><i class="fa fa-pie-chart"></i> Comparison</button>
+            <br>
+            <hr/>
+            <p text-align="center" style="font-size:18px;">This section contains all elements that sadlksadkljas dksjfklsdfjlds dsfñlkdsñlfkdñslfk lfksdñflkdsñlfkdsñ</p>
+          </div>
+          <div class="col-md-1">
+            <span></span>
+          </div>
+      </div>
+      <hr/>
+    </div>
+
+    <div class="container-fluid" id="pretrained_models_resource" hidden>
+      <br>
+      <div class="row">
+        <div class="col-md-1">
+          <span></span>
+        </div>
+        <div  class="col-md-10 text-center">
+          <h3>Pre-trained Models</h3>
+          <hr/>
+          <br>
+          <p text-align="center" style="font-size:18px;">This section has the purpose of expose the pre-trained models trained through transfer learning, with objetive of recognize aerial scena. Adictionally, the user can download the models.</p>
+          <br>
+          <hr/>
+        </div>
+        <div class="col-md-1">
+          <span></span>
+        </div>
+      </div>
+
+
+      <div class="row text-center">
+          <div class="col-md-2">
+            <span></span>
+          </div>
+          <div class="col-md-8">
+            <div class="card bg-light mb-3" id=pretrained_models_resource_card>
+               <div class="card-body">
+                 <br>
+                 <div class="row">
+                   <div class="col">
+                     <h6>MobileNet</h6>
+                     <hr/>
+                     <br>
+                     <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                     <br>
+                   </div>
+                   <div class="col">
+                     <div class="text-center">
+                       <h6>VGG 16</h6>
+                       <hr/>
+                       <br>
+                       <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                       <br>
+                     </div>
+
+
+                   </div>
+                   <div class="col">
+                     <h6>VGG 19</h6>
+                     <hr/>
+                     <br>
+                     <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                     <br>
+                   </div>
+                   <div class="col">
+                     <h6>ResNet101 </h6>
+                     <hr/>
+                     <br>
+                     <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                     <br>
+                   </div>
+                 </div>
+                 <br><br><br>
+                 <div class="row">
+                   <div class="col">
+                     <h6>MobileNetV2</h6>
+                     <hr/>
+                     <br>
+                     <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                     <br>
+                   </div>
+                   <div class="col">
+                     <h6>DenseNet121</h6>
+                     <hr/>
+                     <br>
+                     <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                     <br>
+                   </div>
+                   <div class="col">
+                     <h6>DenseNet169</h6>
+                     <hr/>
+                     <br>
+                     <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                     <br>
+                   </div>
+                   <div class="col">
+                     <h6>ResNetNext101</h6>
+                     <hr/>
+                     <br>
+                     <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                     <br>
+                   </div>
+                 </div>
+                 <br>
+               </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <span></span>
+          </div>
+
+
+      </div>
+    </div>
+
+    <div class="container-fluid" id="dataset_source" hidden>
+      <br><br>
+      <hr/>
+      <br><br>
+      <div class="row">
+        <div class="col-md-1">
+          <span></span>
+        </div>
+        <div  class="col-md-10 text-center">
+          <h3>Image Dataset</h3>
+          <hr/>
+          <br>
+          <p text-align="center" style="font-size:18px;">This section has the purpose of expose the pre-trained models trained through transfer learning, with objetive of recognize aerial scena. Adictionally, the user can download the models.</p>
+          <br>
+          <hr/>
+        </div>
+        <div class="col-md-1">
+          <span></span>
+        </div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col-md-1">
+          <span></span>
+        </div>
+
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col">
+              <div class="card bg-light mb3">
+                <div class="card-body text-center">
+                  <br>
+                  <h4>Distribution 50 - 50</h4>
+                  <hr/>
+                  <br>
+                  <p>This Data has a distribution 50 - 50, that means, 50% of images are used as training images and the rest 50% as test images</p>
+                  <br>
+                  <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card bg-light mb3">
+                <div class="card-body text-center">
+                  <br>
+                  <h4>Distribution 60 - 40</h4>
+                  <hr/>
+                  <br>
+                  <p>This Data has a distribution 50 - 50, that means, 50% of images are used as training images and the rest 50% as test images</p>
+                  <br>
+                  <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card bg-light mb3">
+                <div class="card-body text-center">
+                  <br>
+                  <h4>Distribution 70 - 30</h4>
+                  <hr/>
+                  <br>
+                  <p>This Data has a distribution 50 - 50, that means, 50% of images are used as training images and the rest 50% as test images</p>
+                  <br>
+                  <button class="btn btn-outline-info"><i class="fa fa-download"></i> Download</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-1">
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid" id="own_model_zone" hidden>
+      <br><br>
+      <div class="row">
+        <div class="col-md-1">
+          <span></span>
+        </div>
+
+        <div class="container-fluid col-md-6" id="own_model">
+
+          <h3 class="text-center">Own model</h3>
+          <p class="text-center">In this part, you can see the layers that you have added to the model</p>
+          <hr/>
+          <br>
+          <div class="card bg-light mb-3">
+            <div class="card-body">
+              <form method="post" action="#" id="#">
+                    <div class="form-group files">
+                      <input id="files" type="file" class="form-control">
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <span></span>
+        </div>
+
+        <div class="container-fluid col-md-3" id="distibution_dataset">
+          <h3 class="text-center">Dataset Distribution</h3>
+          <p class="text-center">In this part, you can see the layers that</p>
+          <hr/>
+          <br>
+          <div class="card bg-light mb-3">
+            <div class="card-body ">
+              <div class="form-group">
+                <br>
+                <div class="chiller_cb">
+                  <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                  <label for="exampleRadios1">
+                    Training: 50%  Test: 50%
+                  </label>
+                  <span></span>
+                </div>
+                <br>
+                <div class="chiller_cb">
+                  <input type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                  <label for="exampleRadios2">
+                    Training: 60%  Test: 40%
+                  </label>
+                  <span></span>
+                </div>
+                <br>
+                <div class="chiller_cb">
+                  <input type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                  <label for="exampleRadios3">
+                    Training: 70%  Test: 30%
+                  </label>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <span></span>
+        </div>
+    </div>
+  </div>
+
+    <!--<div class="container-fluid" id="comparison_zone" hidden>
+      <br><br><br>
+      <div class="row">
+        <div class="col-md-1">
+          <span></span>
+        </div>
+        <div class="container-fluid col-md-6" id="pretrained_models">
+          <h3 class="text-center">Pre-trained Models</h3>
+          <p class="text-center">In this part, you can see the layers that you have added to the model</p>
+          <hr/>
+          <br>
+          <div class="card bg-light mb-3">
+            <div class="card-body ">
+              <br>
+              <div class="row">
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckbox" type="checkbox" checked>
+                    <label for="myCheckbox">MobileNet</label>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckbox2" type="checkbox">
+                    <label for="myCheckbox2">VGG 16</label>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckbox3" type="checkbox">
+                    <label for="myCheckbox3">VGG 19</label>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckboxe" type="checkbox" checked>
+                    <label for="myCheckboxe">ResNet101</label>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckbox2e" type="checkbox">
+                    <label for="myCheckbox2e">MobilNetV2</label>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckbox3e" type="checkbox">
+                    <label for="myCheckbox3e">DenseNet121</label>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckboxr" type="checkbox" checked>
+                    <label for="myCheckboxr">DenseNet169</label>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="chiller_cb">
+                    <input id="myCheckbox2r" type="checkbox">
+                    <label for="myCheckbox2r">ResNetNext101</label>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <span></span>
+        </div>
+
+        <div class="container-fluid col-md-3" id="send_app">
+          <h3 class="text-center">Run App</h3>
+          <p class="text-center">In this part, you can see the layers that</p>
+          <hr/>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card bg-light mb-3">
+                <div class="card-body ">
+                  <form>
+                    <div class="form-group ">
+                      <div class="row">
+                        <div class="col-8">
+                          <label class="text-center" for="email_user">Email</label>
+                          <input type="email" class="form-control" id="email_user" aria-describedby="emailHelp" placeholder="">
+                        </div>
+                        <div class="col-4 align-self-center">
+                            <button type="button" class="btn btn-info text-center" id="button_send">Run App</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <br><br><br>-->
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Dark card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>
