@@ -1,0 +1,8 @@
+For this folder, you must download the following compressed file https://drive.google.com/drive/folders/11MrmqXegjLk2odWdhqnTAuz0xeus7jtT?usp=sharing, and unzip it in this folder so that it is structured as follows:
+
+static
+  - models
+         -model_inceptionv3.h5
+         -model_mobilenet.h5
+         -model_mobilenetv2.h5
+         -model_resnet50.h5
