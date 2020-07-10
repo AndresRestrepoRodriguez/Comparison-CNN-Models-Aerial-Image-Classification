@@ -1,4 +1,5 @@
-For this folder, you must download the following compressed file https://drive.google.com/drive/folders/11MrmqXegjLk2odWdhqnTAuz0xeus7jtT?usp=sharing, and unzip it in this folder so that it is structured as follows:
+For this folder, you must download the models located in the following folder https://drive.google.com/drive/folders/11MrmqXegjLk2odWdhqnTAuz0xeus7jtT?usp=sharing, and do
+save in the current folder so that it is structured as follows:
 
 static
   - models
